@@ -17,9 +17,17 @@ int main(void) {
     } */
 
     if(V%(A-B) == 0) {
-        cout << V-B << endl;
+        if(A-B == 1) {
+            cout << V/(A-B)-B << endl;
+        } else {
+            cout << V/(A-B) << endl;
+        }
     } else {
-        cout << V%(A-B)+1 << endl;
+        if((V/(A-B)*(A-B)+A) >= V) {
+            cout << V/(A-B)+1 << endl;
+        } else {
+            cout << V/(A-B) << endl;
+        }
     }
 
     return 0;
