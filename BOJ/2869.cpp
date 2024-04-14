@@ -6,8 +6,7 @@ int main(void) {
 
     cin >> A >> B >> V;
 
-    /* for(int i = 1;; i++) {
-        sum += A;
+    /* for(int i = 1;; i++) {x
         if (sum >= V) {
             cout << i << endl;
             break;
