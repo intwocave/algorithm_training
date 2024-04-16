@@ -21,14 +21,23 @@ int main(void) {
                 str[i] = str[i+1];
                 str[i+1] = tmp;
                 sw = true;
-            } else {
-                if(!str[i].compare(str[i+1]) && str[i]!="") {
-                    str[i] = "";
-                    n--;
-                }
-            }
+            } 
         }  
     } while(sw);
+
+    do {
+        sw=false;
+        for(int i=0; i<N-1; i++) {
+            for(int j=i+1; j<N; j++) {
+                if(!str[i].compare(str[j]) && str[i]!="") {
+                    str[j] = "";
+                    n--;
+                    sw = true;
+                }
+            }
+        }
+    } while(sw);
+
     string *newStr = new string[n];
 
     for(int i=0, j=0; i<N; i++) {
