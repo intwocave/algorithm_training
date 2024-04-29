@@ -1,32 +1,23 @@
 #include <iostream>
 using namespace std;
 
-int zero=0, one=0;
-
-int fibonacci(int n) {
-    if (n == 0) {
-        // printf("0");
-        zero++;
-        return 0;
-    } else if (n == 1) {
-        // printf("1");
-        one++;
-        return 1;
-    } else {
-        return fibonacci(n-1) + fibonacci(n-2);
-    }
-}
-
 int main(void) {
-    int T;
-    cin >> T;
-    int arr[T] = {0,};
+    int t, n;
+    cin >> t;
+    int arr[41][2] = {
+        {1, 0}, 
+        {0, 1}
+    };
 
-    for(int i=0; i<T; i++) cin >> arr[i];
-    for(int i=0; i<T; i++) {
-        fibonacci(arr[i]);
-        cout << zero << " " << one << endl;
-        zero = one = 0;
+    for(int i=2; i<41; i++) {
+        arr[i][0] = arr[i-1][0] + arr[i-2][0];
+        arr[i][1] = arr[i-1][1] + arr[i-2][1];
+        // cout << arr[i][0] << " " << arr[i][1] << endl;
+    }
+
+    for(int i=0; i<t; i++) {
+        cin >> n;
+        cout << arr[n][0] << " " << arr[n][1] << endl;
     }
 
     return 0;
