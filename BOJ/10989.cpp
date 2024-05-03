@@ -1,23 +1,26 @@
 #include <iostream>
-#include <vector>
-#include <algorithm>
 using namespace std;
 
 int main(void) {
-    vector<short> v;
+    ios::sync_with_stdio(false);
+    cin.tie(NULL);
+    cout.tie(NULL);
+
+    int lay[10000+1] = {};
     int n;
     cin >> n;
 
     for (int i=0; i<n; i++) {
-        short num;
+        int num;
         cin >> num;
-        v.push_back(num);
+        lay[num]++;
+        // cout << lay[num] << " ";
     }
 
-    sort(v.begin(), v.end());
-
-    for (int i=0; i<n; i++) {
-        cout << v[i] << '\n';
+    for (int i=1; i<=10000; i++) {
+        for(int j=0; j<lay[i]; j++) {
+            cout << i << '\n';
+        }
     }
 
     return 0;
