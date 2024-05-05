@@ -1,40 +1,24 @@
 #include <iostream>
+#include <vector>
+#include <algorithm>
 using namespace std;
 
+ bool cmp()
+
 int main(void) {
-    int N;
-    cin >> N;
-    int tosi[N]={};
-    string name[N]={};
+    vector<pair<int, string>> v;
+    int n;
+    cin >> n;
 
-    for(int i=0; i<N; i++) {
-        cin >> tosi[i] >> name[i];
+    for(int i=0; i<n; i++) {
+        int num; string str;
+        cin >> num >> str;
+        v.push_back(make_pair(num, str));
     }
 
-    bool sw;
-    int tmp;
-    string str;
-    do
-    {
-        sw = false;
-        for(int i=0; i<N-1; i++) {
-            if(tosi[i] > tosi[i+1]) {
-                tmp = tosi[i];
-                tosi[i] = tosi[i+1];
-                tosi[i+1] = tmp;
+    sort(v.begin(), v.end());
 
-                str = name[i];
-                name[i] = name[i+1];
-                name[i+1] = str;
-
-                sw = true;
-            }
-        }
-    } while (sw);
-    
-    for (int i=0; i<N; i++) {
-        cout << tosi[i] << " " << name[i] << endl;
-    }
+    for(auto a : v) cout << a.first << " " << a.second << '\n';
 
     return 0;
 }
