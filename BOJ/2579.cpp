@@ -2,37 +2,39 @@
 using namespace std;
 
 int main(void) {
-    int n, sum, arr[301] = {};
+    int n, arr[2][301] = {};
     cin >> n;
 
-    for (int i=1; i<=n; i++) cin >> arr[i];
+    cin >> arr[1][1];
+    bool cnt[2] = {false, false};
+    for (int i=2; i<=n; i++) {
+        cin >> arr[1][i];
+        arr[0][i] = arr[1][i];
 
-    sum = arr[n];
-    for (int i=n, cnt=0; i>1;) {
-        if(i==2 && cnt == 0) {
-            sum += arr[i-1];
-            i -= 1;
-        } else if(i==2 && cnt == 1) {
-            break;
-        } else {
-            if(arr[i-2] > arr[i-1]) {
-                sum += arr[i-2];
-                i -= 2;
-                cnt = 0;
-            }
-            else if(arr[i-2] < arr[i-1] && cnt < 1) {
-                sum += arr[i-1];
-                i -= 1;
-                cnt++;
-            } else {
-                sum += arr[i-2];
-                i -= 2;
-                cnt = 0;
-            }
+        if(arr[0][i-1] > arr[0][i-2] && cnt[0] == false) {
+            arr[0][i] += arr[0][i-1];
+            cnt[0] = true;
+        } else { 
+            arr[0][i] += arr[0][i-2];
+            cnt[0] = false;
+        }
+
+        if(arr[1][i-1] > arr[1][i-2] && cnt[1] == false) {
+            arr[1][i] += arr[1][i-1];
+            cnt[1] = true;
+        } else { 
+            arr[1][i] += arr[1][i-2];
+            cnt[1] = false;
         }
     }
-
-    cout << sum << endl;
+    
+    /* cout << endl;
+    for(int i=0; i<=n; i++) {cout << arr[0][i] << '\n';}
+    cout << endl;
+    for(int i=0; i<=n; i++) {cout << arr[1][i] << '\n';} */
+    // cout << "arr[0][" << n << "] = " << arr[0][n] << endl;
+    // cout << "arr[1][" << n << "] = " << arr[1][n] << endl;
+    cout << max(arr[0][n], arr[1][n]) << endl;
 
     return 0;
 }
