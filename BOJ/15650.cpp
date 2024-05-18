@@ -9,7 +9,7 @@ int main(void) {
     for(int i=1; i<=n; i++) arr[i] = i;
 
     for(int j=1; j<=m; j++) {
-        for(int i=j, cnt; i<=n; i++) {
+        for(int i=1, cnt;;) {
             cnt=0;
             if(vs[i]==false && cnt<m) {
                 cout << arr[i] << " ";
